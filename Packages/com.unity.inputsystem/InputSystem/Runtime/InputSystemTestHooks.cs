@@ -35,13 +35,17 @@ namespace UnityEngine.InputSystem
         internal static void TestHook_DestroyAndReset()
         {
             InputSystem.s_Manager?.Dispose();
+#if DEBUG
             if (InputSystem.remoteConnection != null)
                 Object.DestroyImmediate(InputSystem.remoteConnection);
+#endif
 
             s_TestHookEditorCleanup?.Invoke();
 
             InputSystem.s_Manager = null;
+#if DEBUG
             InputSystem.remoteConnection = null;
+#endif
             InputSystem.s_Remote = null;
         }
 
@@ -49,7 +53,9 @@ namespace UnityEngine.InputSystem
         {
             InputSystem.s_Manager = manager;
             InputSystem.s_Remote = remote;
+#if DEBUG
             InputSystem.remoteConnection = remoteConnection;
+#endif
         }
 
         internal static void TestHook_SwitchToDifferentInputManager(InputManager otherManager)
