@@ -15,7 +15,8 @@
     ],
     "autoReferenced": false,
     "defineConstraints": [
-        "UNITY_TESTS_FRAMEWORK"
+        "UNITY_TESTS_FRAMEWORK",
+        "DEBUG"
     ],
     "versionDefines": [
         {
